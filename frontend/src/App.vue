@@ -1,7 +1,8 @@
 <template>
   <div id="app">
-    <div class="bg-[#875D53] h-[50vh]">
-    <div class="w-80">
+    <div class="bg-[#875D53] h-full container mx-auto my-5 grid grid-cols-3 gap-4">
+      <div class="">
+      <span>ค้นหา 'คณะ'</span>
       <multiselect 
         v-model="value" 
         tag-placeholder="Add this as new tag" placeholder="Search or add a tag" 
@@ -9,9 +10,38 @@
         :taggable="true" @tag="addTag"
         :close-on-select="false">
       </multiselect>
+      </div>
+      <div class="">
+      <span>ค้นหา 'รอบรับสมัคร'</span>
+      <multiselect 
+        v-model="value" 
+        tag-placeholder="Add this as new tag" placeholder="Search or add a tag" 
+        :options="round" :multiple="true" 
+        :taggable="true" @tag="addTag"
+        :close-on-select="false">
+      </multiselect>
+      </div>
+      <div class="">
+      <span>ค้นหา 'โครงการ'</span>
+      <multiselect 
+        v-model="value" 
+        tag-placeholder="Add this as new tag" placeholder="Search or add a tag" 
+        :options="projects" :multiple="true" 
+        :taggable="true" @tag="addTag"
+        :close-on-select="false">
+      </multiselect>
+      </div>
+      <div class="">
+      <span>ค้นหาหลักสูตร ไทย / นานาชาติ</span>
+      <multiselect 
+        v-model="value" 
+        tag-placeholder="Add this as new tag" placeholder="Search or add a tag" 
+        :options="course" :multiple="true" 
+        :taggable="true" @tag="addTag"
+        :close-on-select="false">
+      </multiselect>
+      </div>
     </div>
-    </div>
-
   </div>
 </template>
 
