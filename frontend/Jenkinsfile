@@ -1,0 +1,20 @@
+pipeline {
+    agent any
+    stages {
+        stage('Cleanup workspace'){
+            steps {
+                cleanWs()
+            }
+        }
+        stage('Clone repo'){
+            steps {
+                git branch: 'main', url: ''
+            }
+        }
+        stage('Install dependencies'){
+            steps {
+                sh 'npm install:frontend'
+            }
+        }
+    }
+}

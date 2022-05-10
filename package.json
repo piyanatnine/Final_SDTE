@@ -1,0 +1,22 @@
+{
+  "name": "final_sdte",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "install:backend": "cd backend && npm install",
+    "install:frontend": "cd frontend && npm install",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "test:front": "cd frontend && npm run test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/piyanatnine/Final_SDTE.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/piyanatnine/Final_SDTE/issues"
+  },
+  "homepage": "https://github.com/piyanatnine/Final_SDTE#readme"
+}
