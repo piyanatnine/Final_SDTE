@@ -1,11 +1,15 @@
 <template>
   <div id="app">
-    <div class="bg-[#875D53] h-full container mx-auto my-5 grid grid-cols-3 gap-4">
+    <div class="bg-blue-500 py-5 justify-items-center ">
+      <div class="flex place-content-center">
+      <span class="text-3xl font-bold">ค้นหาหลักสูตรที่เปิด</span>
+      </div>
+    <div class="bg-white h-full container mx-auto my-5 grid grid-cols-3 gap-4 p-5">
       <div class="">
       <span>ค้นหา 'คณะ'</span>
       <multiselect 
-        v-model="value" 
-        tag-placeholder="Add this as new tag" placeholder="Search or add a tag" 
+        v-model="value.faculity" 
+        tag-placeholder="Add" placeholder="Search" 
         :options="faculity" :multiple="true" 
         :taggable="true" @tag="addTag"
         :close-on-select="false">
@@ -14,8 +18,8 @@
       <div class="">
       <span>ค้นหา 'รอบรับสมัคร'</span>
       <multiselect 
-        v-model="value" 
-        tag-placeholder="Add this as new tag" placeholder="Search or add a tag" 
+        v-model="value.round" 
+        tag-placeholder="Add" placeholder="Search" 
         :options="round" :multiple="true" 
         :taggable="true" @tag="addTag"
         :close-on-select="false">
@@ -24,8 +28,8 @@
       <div class="">
       <span>ค้นหา 'โครงการ'</span>
       <multiselect 
-        v-model="value" 
-        tag-placeholder="Add this as new tag" placeholder="Search or add a tag" 
+        v-model="value.projects" 
+        tag-placeholder="Add" placeholder="Search" 
         :options="projects" :multiple="true" 
         :taggable="true" @tag="addTag"
         :close-on-select="false">
@@ -34,13 +38,24 @@
       <div class="">
       <span>ค้นหาหลักสูตร ไทย / นานาชาติ</span>
       <multiselect 
-        v-model="value" 
-        tag-placeholder="Add this as new tag" placeholder="Search or add a tag" 
+        v-model="value.course" 
+        tag-placeholder="Add" placeholder="Search" 
         :options="course" :multiple="true" 
         :taggable="true" @tag="addTag"
         :close-on-select="false">
       </multiselect>
       </div>
+    </div>
+    </div>
+    <div class="">
+      <span>
+        ผลการค้นหา : {{ count }} รายการ
+      </span>
+      <template>
+        <div v-for="(data, index) in all" v-bind:key={index} >
+          <span>{{ data.name }}</span>
+        </div>
+      </template>
     </div>
   </div>
 </template>
@@ -54,7 +69,12 @@ export default {
   components: { Multiselect },
   data() {
     return {
-      value: null,
+      value: {
+        faculity: null,
+        round: null,
+        projects: null,
+        course: null,
+      },
       faculity: [],
       round: [],
       projects: [],
